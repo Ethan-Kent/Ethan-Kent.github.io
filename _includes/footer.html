@@ -171,7 +171,7 @@
         async('{{ "/js/jquery.tagcloud.js" | prepend: site.baseurl }}',function(){
             $.fn.tagcloud.defaults = {
                 //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: 'a2c6e6', end: '#1691cd'},
+                color: {start: '#1691cd', end: '#a2c6e6'},
             };
             $('#tag_cloud a').tagcloud();
         })
