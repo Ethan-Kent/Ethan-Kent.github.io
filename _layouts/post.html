@@ -41,9 +41,8 @@ layout: default
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
 <!-- 发文信息开始 -->
-                    <span class="meta">作者：{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} ㅤ日期：{{ page.date | date: "%Y-%m-%d" }} ㅤ阅读："busuanzi_value_page_pv"次</span> ㅤ
+                    <span class="meta">作者：{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} ㅤ日期：{{ page.date | date: "%Y-%m-%d" }}</span> ㅤ
 <!-- 发文信息结束 -->
-
 
 			
                 </div>
@@ -67,6 +66,13 @@ layout: default
 
                 <hr style="visibility: hidden;">
 
+<!-- 阅读量统计开始 -->
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>
+<!-- 阅读量统计结束 -->
+
+		    
                 <ul class="pager">
                     {% if page.previous.url %}
                     <li class="previous">
