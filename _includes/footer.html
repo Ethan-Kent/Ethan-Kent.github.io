@@ -1,9 +1,31 @@
 <!-- Footer -->
 
-<!-- 网站统计不蒜子脚本开始 -->   
+<!-- 网站统计脚本开始 -->   
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
-<!-- 网站统计不蒜子脚本结束 -->   
+<!-- 网站统计脚本结束 -->   
+
+
+<!-- 网站运行时间脚本开始 -->   
+    <script>
+        function calculateElapsedTime() {
+            const startTime = new Date('2022-10-26T16:23:46');
+            const now = new Date();
+            const elapsedMilliseconds = now - startTime;
+
+            const totalSeconds = Math.floor(elapsedMilliseconds / 1000);
+            const days = Math.floor(totalSeconds / (3600 * 24));
+            const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            const elapsedTimeElement = document.getElementById('elapsed-time');
+            elapsedTimeElement.textContent = `本站已运行${days}天${hours}小时${minutes}分钟${seconds}秒`;
+        }
+
+        setInterval(calculateElapsedTime, 1000);
+    </script>
+<!-- 网站运行时间脚本结束 -->   
 
 <footer>
     <div class="container">
@@ -21,12 +43,26 @@
                     </li>
                     {% endif %}
 
+                    
+    <!-- 网站运行时间模块开始 -->
+    <span style="color: #bfbfbf; font-size: 12px; text-align: center !important; display: block;" id="elapsed-time">
+    </span>
+    <!-- 网站运行时间模块结束 -->
+                    
+    <!-- 网站统计显示开始 -->
+    <span style="color: #bfbfbf; font-size: 12px; text-align: center !important; display: block;">
+        累计访问量<span id="busuanzi_value_site_pv"></span>次 | 访客数<span id="busuanzi_value_site_uv"></span>人
+    </span>
+    <!-- 网站统计显示结束 -->
 
-<!-- 网站统计显示开始 -->
+
+                    
+                    
+<!-- 旧版网站统计显示开始 
         <span style="color: #bfbfbf; font-size: 12px; text-align: center !important; display: block;">
             累计访问量<span id="busuanzi_value_site_pv"></span>次 | 访客数<span id="busuanzi_value_site_uv"></span>人
         </span>
-        <!-- 网站统计显示结束 -->
+         旧版网站统计显示结束 -->
 
                     
                     <!-- add jianshu add target = "_blank" to <a> by BY -->
