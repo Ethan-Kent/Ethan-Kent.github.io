@@ -8,9 +8,12 @@ url: "https://slyzmun.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/slyzmun/slyzmun.github.io.git" # you code repository
 
+
+# 以下是联系方式，暂且隐藏
+# email是父元素，禁止删除！！！
+
 # email: slyzmun@outlook.com
 # QQ: "507227969"
-
 
 
 
@@ -91,7 +94,7 @@ gitalk:
 
 # Featured Tags
 featured-tags: true                     # 是否使用首页标签
-featured-condition-size: 1              # 相同标签数量大于这个数，才会出现在首页
+featured-condition-size: 0              # 相同标签数量大于这个数，才会出现在首页（建议设置为0）
 
 
 
