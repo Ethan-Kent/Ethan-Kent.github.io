@@ -37,8 +37,9 @@ description: "从胜利出发，与世界对话"
         </div>
     </a>
     <p class="post-meta">
-        由“{% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %}”发布于{{ post.date | date: "%Y年%m月%d日" }}
-    <!-- 作者和发布日期信息 -->
+<!-- 发文信息开始 -->
+        作者：{% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %}  日期：{{ post.date | date: "%Y-%m-%d" }}
+<!-- 发文信息结束 -->
     </p>
 </div>
 <hr>
