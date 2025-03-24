@@ -3,11 +3,14 @@ layout: page
 description: "从胜利出发，与世界对话"
 ---
 
+<!-- 顶部滚动字条 -->
+{% if site.top-scroll-bar-control | default: true %}
 <div style="position: relative; overflow: hidden!important; background: #1691cd!important; padding: 3px 0!important;">
     <div style="display: inline-block!important; animation: marquee 15s linear infinite!important; white-space: nowrap!important; font-size: 12px!important; color: white!important; font-weight: 400!important;">
         {{ site.top-scroll-bar }}
     </div>
 </div>
+{% endif %}
 
 <!--以下是功能栏，删除
 <ul class="pager">
