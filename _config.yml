@@ -7,6 +7,7 @@ keyword: "胜利一中,胜利第一中学,模拟联合国,模联,MUN,山东,东�
 url: "https://slyzmun.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/slyzmun/slyzmun.github.io.git" # you code repository
+top-scroll-bar: 欢迎访问胜利一中模拟联合国协会官方网站！近期网站正在逐步建设中，请耐心等待
 
 
 # 以下是联系方式，暂且隐藏
