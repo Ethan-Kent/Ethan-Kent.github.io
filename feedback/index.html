@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>用户反馈</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      padding: 20px;
+      background-image: url('https://unsplash.it/1080/2460?random');
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin: 0 auto;
+      width: 80%;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 16px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    input[type="text"]:invalid {
+      border-color: red;
+    }
+
+    input[type="submit"] {
+      padding: 15px 30px;
+      background-color: #007AFF;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: background-color 0.3s ease;
+      margin: 0 auto;
+      display: block;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+  <script>
+    function validateContact() {
+      var contactInput = document.getElementById('contact');
+      var contactValue = contactInput.value;
+
+      // 检查是否为 11 位数字的电话号码或有效的邮箱格式
+      var phoneRegex = /^\d{11}$/;
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!phoneRegex.test(contactValue) &&!emailRegex.test(contactValue)) {
+        contactInput.setCustomValidity('联系方式必须是 11 位数字的电话号码或有效的邮箱地址');
+      } else {
+        contactInput.setCustomValidity('');
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h2>用户反馈</h2>
+  <form action="send_feedback.php" method="post">
+    <label for="contact">联系方式：</label><br>
+    <input type="text" id="contact" name="contact" oninput="validateContact()"><br>
+    <label for="question">问题描述：</label><br>
+    <textarea id="question" name="question" rows="4" cols="50"></textarea><br>
+    <input type="submit" value="提交">
+  </form>
+</body>
+
+</html>
