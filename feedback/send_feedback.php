@@ -31,16 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $browser = $_SERVER['HTTP_USER_AGENT'];
 
         // QQ 邮箱的相关配置
-        $to = "这里写你要发送到的邮箱"; 
+        $to = "slyzmun@outlook.com"; 
         $subject = "用户反馈";
         $message = "联系方式：".$contact."\n问题描述：".$question."\nIP 地址：".$ipAddress."\n浏览器：".$browser;
         $headers = "From: your_qq_email@qq.com"; 
 
         // 设置 SMTP 服务器和授权码
-        ini_set("SMTP","ssl://smtp.qq.com");
-        ini_set("smtp_port","465");
-        ini_set("auth_username","写你的qq邮箱");
-        ini_set("auth_password","qq授权码");
+        ini_set("SMTP","ssl://smtp-mail.outlook.com");
+        ini_set("smtp_port","587");
+        ini_set("auth_username","slyzmun@outlook.com");
+        ini_set("auth_password","Slyz_Mun@1965");
 
         if (mail($to, $subject, $message, $headers)) {
             // 增加提交次数
