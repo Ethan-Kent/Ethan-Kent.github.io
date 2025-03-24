@@ -41,8 +41,11 @@ layout: default
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
 <!-- 发文信息开始 -->
-                    <span class="meta">作者：{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} ㅤ日期：{{ page.date | date: "%Y-%m-%d" }}</span>
+                    <span class="meta">作者：{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} ㅤ日期：{{ page.date | date: "%Y-%m-%d" }}</span> ㅤ阅读：<span id="busuanzi_value_page_pv"></span>次
 <!-- 发文信息结束 -->
+
+
+			
                 </div>
             </div>
         </div>
