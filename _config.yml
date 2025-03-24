@@ -9,8 +9,8 @@ baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/slyzmun/slyzmun.github.io.git" # you code repository
 
 
-top-scroll-bar-control: true  # 顶部循环字条开关（true/false）
-top-scroll-bar: "🔈 公告：欢迎访问胜利一中模拟联合国协会官方网站！本站近期正在逐步进行建设中，敬请期待~"  # 文字内容
+top-scroll-bar-control: true  # 顶部循环字条显示/隐藏（true/false）
+top-scroll-bar: "🔈 公告：欢迎访问胜利一中模拟联合国协会官方网站！本站近期正在逐步进行建设中，敬请期待~"  # 字条内容
 
 
 
