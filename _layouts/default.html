@@ -12,6 +12,12 @@
 
     {% include footer.html %}
 
+        <!-- 页面加载完成后回滚顶部 -->
+    <script>
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+    </script>
 
 <!-- Image to hack wechat -->
 <img src="/img/apple-touch-icon.png" width="0" height="0" />
