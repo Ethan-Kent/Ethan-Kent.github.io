@@ -684,7 +684,7 @@ pre code {
 }
 footer {
   font-size: 20px;
-  padding: 50px 0 65px;
+  padding: 30px 0 20px;
 }
 footer .list-inline {
   margin: 0;
@@ -875,7 +875,7 @@ img::-moz-selection {
   }
 }
 #tag-heading {
-  padding: 70px 0 60px;
+  padding: 95px 0 70px;
 }
 @media only screen and (min-width: 768px) {
   #tag-heading {
