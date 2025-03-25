@@ -19,7 +19,7 @@
             const seconds = totalSeconds % 60;
 
             const elapsedTimeElement = document.getElementById('elapsed-time');
-            elapsedTimeElement.textContent = `网站本次已连续运行${days}天${hours}小时${minutes}分钟${seconds}秒`;
+            elapsedTimeElement.textContent = `网站已连续运行${days}天${hours}小时${minutes}分钟${seconds}秒`;
         }
 
         setInterval(calculateElapsedTime, 1000);
