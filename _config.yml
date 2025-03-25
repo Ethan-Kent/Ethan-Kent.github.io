@@ -1,5 +1,5 @@
 top-scroll-bar-control: true  # 顶部循环字条显示/隐藏（true/false）
-top-scroll-bar: "🔈 公告：欢迎访问胜利一中模拟联合国协会官方网站！本站近期正在逐步进行建设中，敬请期待~ 本站链接：<a href="https://slyzmun.github.io/">https://slyzmun.github.io"  # 字条内容
+top-scroll-bar: "🔈 公告：欢迎访问胜利一中模拟联合国协会官方网站！本站近期正在逐步进行建设中，敬请期待~ 本站链接："<a href="https://slyzmun.github.io/">https://slyzmun.github.io  # 字条内容
 
 # 超链接模板：<a href="https://example.com">点击这里访问示例网站</a>
 
