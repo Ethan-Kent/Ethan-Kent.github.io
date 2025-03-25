@@ -76,9 +76,9 @@ kramdown:
 # Disqus（https://disqus.com/）
 # disqus_username: qiubaiying
 
-# Gitalk
+# Gitalk（目前国内无法使用，隐藏）
 gitalk:
-  enable: true    #是否开启Gitalk评论（true/false）
+  enable: false    #是否开启Gitalk评论（true/false）
   clientID: Ov23li3hU3jmJa7cqTbA                            #生成的clientID
   clientSecret: cc5cdc18b164a724d30d980c7efedffab9450727    #生成的clientSecret
   repo: slyzmun_gitalk    #仓库名称
