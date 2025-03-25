@@ -1,3 +1,12 @@
+top-scroll-bar-control: true  # 顶部循环字条显示/隐藏（true/false）
+top-scroll-bar: "🔈 公告：欢迎访问胜利一中模拟联合国协会官方网站！本站近期正在逐步进行建设中，敬请期待~"  # 字条内容
+
+# 以下内容禁止修改！！！————————————————————————————————————————————————————————————————————————————————————————————————————————
+# 以下内容禁止修改！！！————————————————————————————————————————————————————————————————————————————————————————————————————————
+# 以下内容禁止修改！！！————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+    
 # Site settings
 title: 胜利一中模拟联合国协会
 SEOTitle: SLYZMUN
@@ -7,12 +16,6 @@ keyword: "胜利一中,胜利第一中学,模拟联合国,模联,MUN,山东,东�
 url: "https://slyzmun.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/slyzmun/slyzmun.github.io.git" # you code repository
-
-
-top-scroll-bar-control: true  # 顶部循环字条显示/隐藏（true/false）
-top-scroll-bar: "🔈 公告：欢迎访问胜利一中模拟联合国协会官方网站！本站近期正在逐步进行建设中，敬请期待~"  # 字条内容
-
-
 
 
 # 以下是联系方式，暂且隐藏
