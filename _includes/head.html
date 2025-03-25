@@ -63,8 +63,12 @@ var _hmt = _hmt || [];
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
-</script>
-<!-- 百度统计结束 -->
-    
+
+            <!-- 页面加载完成后回滚顶部 -->
+
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        };
+    </script>
   
 </head>
