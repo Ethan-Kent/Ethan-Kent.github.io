@@ -6,7 +6,7 @@ layout: default
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
 <!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
-<!-- Post Header -->
+<!-- 文章头部 -->
 <style type="text/css">
     header.intro-header{
         position: relative;
@@ -40,11 +40,10 @@ layout: default
                     {% comment %} if page.subtitle {% endcomment %}
                     <h2 class="subheading">{{ page.subtitle }}</h2>
                     {% comment %} endif {% endcomment %}
-<!-- 发文信息开始 -->
+			
+<!-- 发文信息 -->
                     <span class="meta">作者：{% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} ㅤ日期：{{ page.date | date: "%Y-%m-%d" }}
 		    </span> ㅤ
-<!-- 发文信息结束 -->
-
 			
                 </div>
             </div>
@@ -52,12 +51,12 @@ layout: default
     </div>
 </header>
 
-<!-- Post Content -->
+<!-- 文章内容 -->
 <article>
     <div class="container">
         <div class="row">
 
-    <!-- Post Container -->
+    <!-- 文章容器 -->
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
@@ -67,12 +66,8 @@ layout: default
 
                 <hr style="visibility: hidden;">
 
-<!-- 阅读量统计模块 		    
+<!-- 阅读量统计 -->		    
     <span id="busuanzi_container_page_pv" style="color: #bfbfbf; font-size: 12px; text-align: left; display: block;">阅读：<span id="busuanzi_value_page_pv"></span>次</span>
-		    -->
-		    
-<!-- 阅读量统计模块（新） -->    
-<span id="busuanzi_page_uv" style="color: #bfbfbf; font-size: 12px; text-align: left; display: block;">阅读：<span id="busuanzi_value_page_uv"></span>人</span>
 
 		    
                 <ul class="pager">
