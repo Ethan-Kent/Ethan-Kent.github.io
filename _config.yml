@@ -84,7 +84,7 @@ gitalk:
   repo: slyzmun/slyzmun_gitalk    #仓库名称
   owner: slyzmun    #github用户名
   admin: ["slyzmun", "ethankent2007"]
-  distractionFreeMode: true #是否启用类似FB的阴影遮罩
+  distractionFreeMode: false #是否启用类似FB的阴影遮罩
 
 
 # 统计
