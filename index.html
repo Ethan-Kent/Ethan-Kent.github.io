@@ -3,47 +3,44 @@ layout: page
 description: "从胜利出发，与世界对话"
 ---
 
+
 <!-- 首页顶部滚动字条样式开始 -->
 <style>
-@keyframes marquee {
-    0% { transform: translateX(150%); }
-    100% { transform: translateX(-100%); }
-}
-.scrolling-text {
-    display: inline - block !important;
-    white - space: nowrap !important;
-    font - size: 12px !important;
-    color: white !important;
-    font - weight: 400 !important;
-    animation: marquee 15s linear infinite !important;
-}
-.scrolling - text:hover {
-    animation - play - state: paused !important;
-}
+    @keyframes marquee {
+        0% { transform: translateX(150%); }
+        100% { transform: translateX(-100%); }
+    }
+    .scrolling-text {
+        display: inline-block;
+        white-space: nowrap;
+        font-size: 12px;
+        color: white;
+        font-weight: 400;
+        animation: marquee 15s linear infinite;
+    }
 </style>
 <!-- 首页顶部滚动字条样式结束 -->
 
-
-<!-- 顶部滚动字条内容开始 -->
-{% if site.top - scroll - bar - control | default: true %}
-<div style="position: relative; overflow: hidden; background: #1691cd; padding: 3px 0; margin - top: 10px;">
-    <div class="scrolling - text">
-        {{ site.top - scroll - bar }}
-    </div>
-</div>
-{% endif %}
-<!-- 顶部滚动字条内容结束 -->    
-
-
 <!-- 顶部滚动字条内容开始 -->
 {% if site.top-scroll-bar-control | default: true %}
-<div style="position: relative; overflow: hidden!important; background: #1691cd!important; padding: 3px 0!important; margin-top: 10px!important;">
-    <div class="scrolling-text">
+<div style="position: relative; overflow: hidden; background: #1691cd; padding: 3px 0; margin-top: 10px;">
+    <div class="scrolling-text" id="marquee-text">
         {{ site.top-scroll-bar }}
     </div>
 </div>
 {% endif %}
-<!-- 顶部滚动字条内容结束 -->    
+<!-- 顶部滚动字条内容结束 -->
+
+<!-- 顶部滚动字条鼠标悬停暂停动画脚本 -->
+<script>
+    const marqueeText = document.getElementById('marquee-text');
+    marqueeText.addEventListener('mouseover', function() {
+        this.style.animationPlayState = 'paused';
+    });
+    marqueeText.addEventListener('mouseout', function() {
+        this.style.animationPlayState = 'running';
+    });
+</script>    
 
 
 
