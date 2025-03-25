@@ -9,7 +9,7 @@
 <!-- 网站运行时间脚本开始 -->   
     <script>
         function calculateElapsedTime() {
-            const startTime = new Date('2025-03-23T09:23:46');
+            const startTime = new Date('{{ site-run-date }}T{{ site-run-time }}');
             const now = new Date();
             const elapsedMilliseconds = now - startTime;
 
@@ -20,7 +20,7 @@
             const seconds = totalSeconds % 60;
 
             const elapsedTimeElement = document.getElementById('elapsed-time');
-            elapsedTimeElement.textContent = `本站已运行${days}天${hours}小时${minutes}分钟${seconds}秒`;
+            elapsedTimeElement.textContent = `网站本次已连续运行${days}天${hours}小时${minutes}分钟${seconds}秒`;
         }
 
         setInterval(calculateElapsedTime, 1000);
