@@ -54,6 +54,34 @@
 
     <!-- ga & ba script hoook -->
 
+    
+    <!-- 回到顶部按钮样式 -->
+<style>
+    #back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+    }
+
+    #back-to-top img {
+        width: 30px;
+        height: 30px;
+    }
+</style>
+
+    
+</head>
+
+
 <!-- 百度统计 -->
     <script>
 var _hmt = _hmt || [];
@@ -72,5 +100,28 @@ var _hmt = _hmt || [];
         };
     </script>
      -->
-  
-</head>
+
+    <!-- 回到顶部按钮 -->
+    <div id="back-to-top">
+        <img src="/img/back-to-top.webp" alt="Back to top">
+    </div>
+
+    <!-- 回到顶部按钮逻辑 -->
+    <script>
+        window.addEventListener('scroll', function() {
+            var backToTop = document.getElementById('back-to-top');
+            if (window.pageYOffset > 100) {
+                backToTop.style.display = 'flex';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
