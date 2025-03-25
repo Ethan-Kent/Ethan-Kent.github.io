@@ -6,7 +6,7 @@
 <!-- 网站统计脚本结束 -->   
 
 
-    <!-- 网站（新）运行时间脚本开始 -->
+    <!-- 网站（新）运行时间脚本开始 
     <script>
         async function getConfig() {
             try {
@@ -57,14 +57,14 @@
 
         setInterval(calculateElapsedTime, 1000);
     </script>
-    <!-- 网站（新）运行时间脚本结束 -->
+     网站（新）运行时间脚本结束 -->
 
 
 
-<!-- 网站运行时间脚本开始 
+<!-- 网站运行时间脚本开始 -->   
     <script>
         function calculateElapsedTime() {
-            const startTime = new Date('{{ site_run_date }}T{{ site_run_time }}');
+            const startTime = new Date('{{ site_run_time }}');
             const now = new Date();
             const elapsedMilliseconds = now - startTime;
 
@@ -80,7 +80,7 @@
 
         setInterval(calculateElapsedTime, 1000);
     </script>
-网站运行时间脚本结束 -->   
+<!-- 网站运行时间脚本结束 -->   
 
 
 
