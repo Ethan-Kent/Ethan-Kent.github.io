@@ -78,12 +78,12 @@ kramdown:
 
 # Gitalk
 gitalk:
-  enable: false    #是否开启Gitalk评论（true/false）
-  clientID: d18b343dd9c7ca49518a                            #生成的clientID
-  clientSecret: 539e88b8a7feffaddbb553b9c421dfefcbc6eced    #生成的clientSecret
-  repo: slyzmun.github.io    #仓库名称
+  enable: true    #是否开启Gitalk评论（true/false）
+  clientID: Ov23li3hU3jmJa7cqTbA                            #生成的clientID
+  clientSecret: fcb4a73362fd1e48acd27b61aadf6f98b723ad7e    #生成的clientSecret
+  repo: slyzmun/slyzmun_gitalk    #仓库名称
   owner: slyzmun    #github用户名
-  admin: slyzmun
+  admin: ["slyzmun", "ethankent2007"]
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
 
 
