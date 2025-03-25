@@ -83,7 +83,7 @@ gitalk:
   clientSecret: cc5cdc18b164a724d30d980c7efedffab9450727    #生成的clientSecret
   repo: slyzmun_gitalk    #仓库名称
   owner: slyzmun    #github用户名
-  admin: ["slyzmun", "ethankent2007"]
+  admin: ["slyzmun"]
   distractionFreeMode: false #是否启用类似FB的阴影遮罩
 
 
