@@ -10,7 +10,7 @@
     <script>
         async function getConfig() {
             try {
-                const response = await fetch('config.yml');
+                const response = await fetch('_config.yml');
                 const ymlText = await response.text();
                 return jsyaml.load(ymlText);
             } catch (error) {
