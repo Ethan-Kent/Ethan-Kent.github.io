@@ -3,7 +3,6 @@ layout: page
 description: "从胜利出发，与世界对话"
 ---
 
-
 <!-- 首页顶部滚动字条样式开始 -->
 <style>
 @keyframes marquee {
@@ -11,18 +10,30 @@ description: "从胜利出发，与世界对话"
     100% { transform: translateX(-100%); }
 }
 .scrolling-text {
-    display: inline-block!important;
-    animation: marquee 15s linear infinite!important;
-    white-space: nowrap!important;
-    font-size: 12px!important;
-    color: white!important;
-    font-weight: 400!important;
+    display: inline - block !important;
+    white - space: nowrap !important;
+    font - size: 12px !important;
+    color: white !important;
+    font - weight: 400 !important;
+    animation: marquee 15s linear infinite !important;
 }
-.scrolling-text:hover {
-    animation-play-state: paused;
+.scrolling - text:hover {
+    animation - play - state: paused !important;
 }
 </style>
 <!-- 首页顶部滚动字条样式结束 -->
+
+
+<!-- 顶部滚动字条内容开始 -->
+{% if site.top - scroll - bar - control | default: true %}
+<div style="position: relative; overflow: hidden; background: #1691cd; padding: 3px 0; margin - top: 10px;">
+    <div class="scrolling - text">
+        {{ site.top - scroll - bar }}
+    </div>
+</div>
+{% endif %}
+<!-- 顶部滚动字条内容结束 -->    
+
 
 <!-- 顶部滚动字条内容开始 -->
 {% if site.top-scroll-bar-control | default: true %}
