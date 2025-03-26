@@ -136,7 +136,7 @@ description: "从胜利出发，与世界对话"
     });
 </script>    
 
-<!-- 用户协议弹窗脚本 -->
+<!-- 获取用户协议文件 -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
    <script>
         const xieyi = document.getElementById('xieyi');
@@ -156,6 +156,58 @@ description: "从胜利出发，与世界对话"
                 console.error('获取文件时出错:', error);
             });
     </script>
+
+<!-- 用户协议弹窗脚本 -->
+<script>
+    // 显示提示信息
+    function showAlert(message) {
+        const alert = document.getElementById('privacyAlert');
+        alert.textContent = message;
+        alert.style.display = 'block';
+        setTimeout(() => {
+            alert.style.display = 'none';
+        }, 2000);
+    }
+
+    // 初始化弹窗
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!localStorage.getItem('privacyAgreed')) {
+            const mask = document.getElementById('privacyMask');
+            const content = document.getElementById('privacyContent');
+            const confirmBtn = document.getElementById('privacy-confirm');
+
+            // 显示弹窗
+            mask.style.display = 'flex';
+
+            // 滚动检测
+            content.addEventListener('scroll', () => {
+                const isBottom = content.scrollHeight - content.scrollTop === content.clientHeight;
+                confirmBtn.disabled = !isBottom;
+            });
+
+            // 确认按钮点击
+            confirmBtn.addEventListener('click', () => {
+                localStorage.setItem('privacyAgreed', 'true');
+                mask.style.display = 'none';
+            });
+
+            // 遮罩层点击
+            mask.addEventListener('click', (e) => {
+                if (e.target === mask) {
+                    showAlert('请阅读完整协议内容');
+                }
+            });
+
+            // 按钮禁用时点击
+            confirmBtn.addEventListener('click', function(e) {
+                if (this.disabled) {
+                    showAlert('请滚动阅读完整协议');
+                    e.preventDefault();
+                }
+            });
+        }
+    });
+</script>
 
 <!--以下是功能栏，删除
 <ul class="pager">
