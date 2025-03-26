@@ -18,8 +18,102 @@ description: "从胜利出发，与世界对话"
         font-weight: 400;
         animation: marquee 15s linear infinite;
     }
+
+        /* 弹窗遮罩层 */
+    .privacy-mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 9999;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* 协议容器 */
+    .privacy-modal {
+        background: white;
+        width: 90%;
+        max-width: 800px;
+        max-height: 80vh;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 协议标题 */
+    .privacy-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 10px;
+    }
+
+    /* 协议内容 */
+    .privacy-content {
+        flex: 1;
+        overflow-y: auto;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    /* 确认按钮 */
+    #privacy-confirm {
+        align-self: center;
+        background: #1691cd;
+        color: white;
+        border: none;
+        padding: 12px 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s;
+    }
+
+    #privacy-confirm:disabled {
+        background: #cccccc;
+        cursor: not-allowed;
+    }
+
+    /* 提示信息 */
+    .privacy-alert {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        z-index: 10000;
+        display: none;
+    }
+    
 </style>
-<!-- 首页顶部滚动字条样式结束 -->
+
+<!-- 用户协议弹窗结构 -->
+<div class="privacy-mask" id="privacyMask">
+    <div class="privacy-modal">
+        <h2 class="privacy-title">胜利一中模拟联合国协会网站隐私协议</h2>
+        <div class="privacy-content" id="privacyContent">
+            <!-- 协议内容（引用md） -->
+                <div id="xieyi"></div>
+        </div>
+        <button id="privacy-confirm" disabled>同意并继续</button>
+    </div>
+</div>
+
+<!-- 提示信息容器 -->
+<div class="privacy-alert" id="privacyAlert"></div>
 
 <!-- 顶部滚动字条内容开始 -->
 {% if site.top-scroll-bar-control | default: true %}
@@ -42,7 +136,26 @@ description: "从胜利出发，与世界对话"
     });
 </script>    
 
+<!-- 用户协议弹窗脚本 -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+   <script>
+        const xieyi = document.getElementById('xieyi');
 
+        fetch('/xieyi.md')
+          .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络请求失败');
+                }
+                return response.text();
+            })
+          .then(data => {
+                const html = marked(data);
+                xieyi.innerHTML = html;
+            })
+          .catch(error => {
+                console.error('获取文件时出错:', error);
+            });
+    </script>
 
 <!--以下是功能栏，删除
 <ul class="pager">
