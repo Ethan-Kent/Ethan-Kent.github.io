@@ -7,16 +7,6 @@
     <meta name="keywords"  content="{{ site.keyword }}">
     <meta name="theme-color" content="{{ site.chrome-tab-theme-color }}">
     <meta name="msvalidate.01" content="22E6E7AA9D8470760CBC46FC882808A5" /><!-- 必应搜索引擎 -->
-
-    <!-- 微软统计开始 -->
-    <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "qtzpxhcgvv");
-</script>
-   <!-- 微软统计结束 -->
     
     <title>{% if page.title %}{{ page.title }} - {{ site.SEOTitle }}{% else %}{{ site.SEOTitle }}{% endif %}</title>
 
@@ -96,7 +86,7 @@
 </head>
 
 
-<!-- 百度统计 -->
+<!-- 百度统计https://tongji.baidu.com/ -->
     <script>
 var _hmt = _hmt || [];
 (function() {
@@ -106,6 +96,15 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
     </script>
+
+<!-- 微软统计https://clarity.microsoft.com/ -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "qtzpxhcgvv");
+</script>
     
 <!-- 页面加载完成后回滚顶部
     <script>
