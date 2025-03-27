@@ -55,7 +55,7 @@
                     
     <!-- 网站统计显示开始 -->
     <span style="color: #bfbfbf; font-size: 12px; text-align: center !important; display: block;">
-        累计访问量<span id="newSitePv"></span>次 | 访客数<span id="newSiteUv"></span>人
+        累计访问量<span id="busuanzi_value_site_pv"></span>次 | 访客数<span id="busuanzi_value_site_uv"></span>人
     </span>
     <!-- 网站统计显示结束 -->
 
@@ -316,37 +316,4 @@
         });
     });
 </script>
-
-<!-- 统计偏移值修改脚本 -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // 获取配置文件中的值
-        const sitePvDataControl = {{ site-pv-data-control }};
-        const siteUvDataControl = {{ site-uv-data-control }};
-
-        // 等待 busuanzi 脚本加载完成
-        const intervalId = setInterval(function () {
-            const sitePvElement = document.getElementById('busuanzi_value_site_pv');
-            const siteUvElement = document.getElementById('busuanzi_value_site_uv');
-
-            if (sitePvElement && sitePvElement.textContent && siteUvElement && siteUvElement.textContent) {
-                clearInterval(intervalId);
-
-                // 获取 busuanzi 的统计数据
-                const sitePv = parseInt(sitePvElement.textContent, 10);
-                const siteUv = parseInt(siteUvElement.textContent, 10);
-
-                // 计算新的统计数据
-                const newSitePv = sitePv + sitePvDataControl;
-                const newSiteUv = siteUv + siteUvDataControl;
-
-                // 更新页面显示
-                sitePvElement.textContent = newSitePv;
-                siteUvElement.textContent = newSiteUv;
-            }
-        }, 100);
-    });
-</script>   
-
 {% endif %}
-
