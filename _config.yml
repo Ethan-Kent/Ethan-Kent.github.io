@@ -7,7 +7,7 @@ top-scroll-bar: "🔈 欢迎访问胜利一中模拟联合国协会官网！网�
 # 左侧广告飘窗设置
 floating-window-control: true  # 广告总开关
 floating-window-img: "none"    # 广告图片路径，没有则填none
-floating-window-content: "<b>DYMUN报名入口</b><br>>>点击进入"  # 广告文字内容
+floating-window-content: "<b>DYMUN报名通道</b><br>>>点击进入"  # 广告文字内容
 floating-window-link: "/dymun"      # 跳转链接内容
 
 
