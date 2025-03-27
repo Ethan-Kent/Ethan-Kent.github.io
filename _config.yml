@@ -4,14 +4,11 @@ site-general-control: true  # 全站开关（true/false），默认开启true，
 top-scroll-bar-control: true  # 顶部循环字条显示/隐藏（true/false）
 top-scroll-bar: "🔈 欢迎访问胜利一中模拟联合国协会官网！网站初期建设正稳步推进，更多精彩，敬请期待！"  # 字条内容
 
-floating-window-control: true  # 广告飘窗显示/隐藏（true/false）
-floating-window-content: 20250327飘窗测试  # 广告飘窗文字内容
-floating-window-link: https://www.baidu.com/  # 广告飘窗超链接
-
-floating-window-speed: 2    # 运动速度（推荐1-3，默认2）
-floating-window-angle: 45   # 初始角度（推荐30-60，默认45）
-floating-window-x: 50       # 初始水平位置（默认50px）
-floating-window-y: 50       # 初始垂直位置（默认50px）
+# 左侧广告飘窗设置
+floating-window-control: true  # 广告总开关
+floating-window-img: "none"    # 广告图片路径，没有填none
+floating-window-content: "广告飘窗<br>测试模块"  # 广告文字内容
+floating-window-link: "www.baidu.com"      # 跳转链接内容
 
 
 # 超链接模板：<a href="https://example.com">点击这里访问示例网站</a>
