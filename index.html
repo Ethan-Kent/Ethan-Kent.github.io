@@ -25,9 +25,7 @@ description: "从胜利出发，与世界对话"
 <!-- 广告飘窗样式开始 -->
 <style>
     .floating-window {
-        position: fixed;
-        top: 50px;
-        left: 50px;
+        position: absolute; 
         width: 150px;
         height: 200px;
         background: #1691cd;
@@ -37,29 +35,10 @@ description: "从胜利出发，与世界对话"
         line-height: 200px;
         font-size: 14px;
         cursor: pointer;
-        z-index: 9999;
         opacity: 0.9;
         box-shadow: 0 0 10px rgba(0,0,0,0.3);
         display: none;
-    }
-
-    .floating-window:hover {
-        opacity: 1;
-    }
-
-    .window-control {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        width: 30px;
-        height: 30px;
-        background: #1691cd;
-        border-radius: 15px;
-        color: white;
-        text-align: center;
-        line-height: 30px;
-        cursor: pointer;
-        z-index: 9999;
+        transform: none; 
     }
 </style>
 <!-- 广告飘窗样式结束 -->
@@ -97,57 +76,68 @@ description: "从胜利出发，与世界对话"
 
 <!-- 广告飘窗动画脚本 -->
 <script>
-    let floatingWindow = document.getElementById('floatingWindow');
-    let toggleButton = document.getElementById('windowToggle');
-    let speedX = 2;
-    let speedY = 1;
+    // 初始化飘窗状态（保持原有逻辑）
     let isClosed = localStorage.getItem('windowClosed');
+    const floatingWindow = document.getElementById('floatingWindow');
+    if (!isClosed) floatingWindow.style.display = 'block';
 
-    // 初始化显示状态
-    if (!isClosed) {
-        floatingWindow.style.display = 'block';
-    }
+    // 使用AdMove实现斜向运动
+    const adMove = new AdMove('floatingWindow');
+    
+    // 定制运动参数（45度斜向）
+    adMove.SetLocation(50, 50); // 初始位置
+    adMove.SetDirection(1, 1); // 初始方向（x正方向，y正方向）
+    const step = 2; // 运动速度
+    const rad = Math.PI / 4; // 45度弧度
+    const kx = Math.sin(rad) * step; // x轴分量
+    const ky = Math.cos(rad) * step; // y轴分量
 
-    // 开关控制
-    toggleButton.addEventListener('click', () => {
+    // 重写CustomMethod实现匀速斜向运动
+    floatingWindow.CustomMethod = function() {
+        const { ScrollX, ScrollY, MoveWidth, MoveHeight } = PicMove;
+        const W = MoveWidth - this.offsetWidth;
+        const H = MoveHeight - this.offsetHeight;
+
+        // 水平方向运动
+        adMove.x += adMove.dirx * kx;
+        if (adMove.x < 0 || adMove.x > W) {
+            adMove.dirx *= -1; // 水平反弹
+            kx = Math.sin((Math.random() + 1) * Math.PI / 6) * step; // 随机角度微调
+        }
+
+        // 垂直方向运动
+        adMove.y += adMove.diry * ky;
+        if (adMove.y < 0 || adMove.y > H) {
+            adMove.diry *= -1; // 垂直反弹
+            ky = Math.cos((Math.random() + 1) * Math.PI / 6) * step; // 随机角度微调
+        }
+
+        // 应用位置（跟随滚动）
+        this.style.left = adMove.x + ScrollX + 'px';
+        this.style.top = adMove.y + ScrollY + 'px';
+    };
+
+    // 控制逻辑（保持原有功能）
+    document.getElementById('windowToggle').addEventListener('click', () => {
         if (floatingWindow.style.display === 'block') {
             floatingWindow.style.display = 'none';
             localStorage.setItem('windowClosed', 'true');
+            adMove.Run(false); // 暂停动画
         } else {
             floatingWindow.style.display = 'block';
             localStorage.removeItem('windowClosed');
+            adMove.Run(true); // 恢复动画
         }
     });
 
-    // 窗口移动动画
-    function moveWindow() {
-        if (floatingWindow.style.display !== 'block') return;
-
-        let rect = floatingWindow.getBoundingClientRect();
-        let newX = rect.left + speedX;
-        let newY = rect.top + speedY;
-
-        // 水平边界检测
-        if (newX < 0 || newX > window.innerWidth - floatingWindow.offsetWidth) {
-            speedX = -speedX;
-        }
-        // 垂直边界检测
-        if (newY < 0 || newY > window.innerHeight - floatingWindow.offsetHeight) {
-            speedY = -speedY;
-        }
-
-        floatingWindow.style.left = newX + 'px';
-        floatingWindow.style.top = newY + 'px';
-        requestAnimationFrame(moveWindow);
-    }
-    requestAnimationFrame(moveWindow);
-
-    // 点击跳转链接
     floatingWindow.addEventListener('click', () => {
         window.open('{{ site.floating-window-link }}', '_blank');
         floatingWindow.style.display = 'none';
         localStorage.setItem('windowClosed', 'true');
     });
+
+    // 初始化运动（页面加载后启动）
+    if (!isClosed) adMove.Run();
 </script>
 
 <!--以下是功能栏，删除
