@@ -316,5 +316,37 @@
         });
     });
 </script>
+
+<!-- 统计偏移值修改脚本 -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // 获取配置文件中的值
+        const sitePvDataControl = {{ site.site-pv-data-control }};
+        const siteUvDataControl = {{ site.site-uv-data-control }};
+
+        // 等待 busuanzi 脚本加载完成
+        const intervalId = setInterval(function () {
+            const sitePvElement = document.getElementById('busuanzi_value_site_pv');
+            const siteUvElement = document.getElementById('busuanzi_value_site_uv');
+
+            if (sitePvElement && sitePvElement.textContent && siteUvElement && siteUvElement.textContent) {
+                clearInterval(intervalId);
+
+                // 获取 busuanzi 的统计数据
+                const sitePv = parseInt(sitePvElement.textContent, 10);
+                const siteUv = parseInt(siteUvElement.textContent, 10);
+
+                // 计算新的统计数据
+                const newSitePv = sitePv + sitePvDataControl;
+                const newSiteUv = siteUv + siteUvDataControl;
+
+                // 更新页面显示
+                sitePvElement.textContent = newSitePv;
+                siteUvElement.textContent = newSiteUv;
+            }
+        }, 100);
+    });
+</script>   
+
 {% endif %}
 
