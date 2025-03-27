@@ -18,22 +18,62 @@ description: "从胜利出发，与世界对话"
         font-weight: 400;
         animation: marquee 15s linear infinite;
     }
-
-    /* 广告小飘窗样式 */
-    #floating-window {
-        position: fixed;
-        width: 300px; /* 3*4 横向，假设宽度为300px */
-        height: 400px; /* 高度为400px */
-        background-color: #1691cd;
-        border-radius: 10px; /* 小圆角矩形 */
-        color: white;
-        text-align: center;
-        line-height: 400px; /* 垂直居中 */
-        cursor: pointer;
-        display: none; /* 初始隐藏 */
-    }
 </style>
 <!-- 首页顶部滚动字条样式结束 -->
+
+
+<!-- 广告飘窗样式开始 -->
+<style>
+    .floating-window {
+        position: fixed;
+        top: 50px;
+        left: 50px;
+        width: 150px;
+        height: 200px;
+        background: #1691cd;
+        border-radius: 10px;
+        color: white;
+        text-align: center;
+        line-height: 200px;
+        font-size: 14px;
+        cursor: pointer;
+        transform: rotate(15deg);
+        z-index: 9999;
+        opacity: 0.9;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        display: none;
+    }
+
+    .floating-window:hover {
+        opacity: 1;
+    }
+
+    .window-control {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background: #1691cd;
+        border-radius: 15px;
+        color: white;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        z-index: 9999;
+    }
+</style>
+<!-- 广告飘窗样式结束 -->
+
+<!-- 广告飘窗HTML结构 -->
+{% if site.floating-window-control %}
+<div class="window-control" id="windowToggle">
+    ×
+</div>
+<div class="floating-window" id="floatingWindow">
+    {{ site.floating-window-content }}
+</div>
+{% endif %}
 
 <!-- 顶部滚动字条内容开始 -->
 {% if site.top-scroll-bar-control | default: true %}
@@ -56,7 +96,60 @@ description: "从胜利出发，与世界对话"
     });
 </script>    
 
+<!-- 广告飘窗动画脚本 -->
+<script>
+    let floatingWindow = document.getElementById('floatingWindow');
+    let toggleButton = document.getElementById('windowToggle');
+    let speedX = 2;
+    let speedY = 1;
+    let isClosed = localStorage.getItem('windowClosed');
 
+    // 初始化显示状态
+    if (!isClosed) {
+        floatingWindow.style.display = 'block';
+    }
+
+    // 开关控制
+    toggleButton.addEventListener('click', () => {
+        if (floatingWindow.style.display === 'block') {
+            floatingWindow.style.display = 'none';
+            localStorage.setItem('windowClosed', 'true');
+        } else {
+            floatingWindow.style.display = 'block';
+            localStorage.removeItem('windowClosed');
+        }
+    });
+
+    // 窗口移动动画
+    function moveWindow() {
+        if (floatingWindow.style.display !== 'block') return;
+
+        let rect = floatingWindow.getBoundingClientRect();
+        let newX = rect.left + speedX;
+        let newY = rect.top + speedY;
+
+        // 水平边界检测
+        if (newX < 0 || newX > window.innerWidth - floatingWindow.offsetWidth) {
+            speedX = -speedX;
+        }
+        // 垂直边界检测
+        if (newY < 0 || newY > window.innerHeight - floatingWindow.offsetHeight) {
+            speedY = -speedY;
+        }
+
+        floatingWindow.style.left = newX + 'px';
+        floatingWindow.style.top = newY + 'px';
+        requestAnimationFrame(moveWindow);
+    }
+    requestAnimationFrame(moveWindow);
+
+    // 点击跳转链接
+    floatingWindow.addEventListener('click', () => {
+        window.open('{{ site.floating-window-link }}', '_blank');
+        floatingWindow.style.display = 'none';
+        localStorage.setItem('windowClosed', 'true');
+    });
+</script>
 
 <!--以下是功能栏，删除
 <ul class="pager">
@@ -115,66 +208,3 @@ description: "从胜利出发，与世界对话"
     {% endif %}
 </ul>
 {% endif %}
-
-<!-- 广告小飘窗 HTML 结构 -->
-<div id="floating-window">
-    {{ floating-window-content }}
-</div>
-
-<!-- 广告小飘窗 JavaScript 交互逻辑 -->
-<script>
-    // 获取飘窗元素
-    const floatingWindow = document.getElementById('floating-window');
-    // 获取开关状态（假设为 true 时显示飘窗）
-    const floatingWindowControl = {{ floating-window-control }};
-
-    // 根据开关状态显示或隐藏飘窗
-    if (floatingWindowControl) {
-        floatingWindow.style.display = 'block';
-    }
-
-    // 初始化飘窗位置
-    let x = window.innerWidth / 2 - 150; // 初始水平位置
-    let y = window.innerHeight / 2 - 200; // 初始垂直位置
-    let dx = 2; // 水平速度
-    let dy = 2; // 垂直速度
-
-    // 移动飘窗的函数
-    function moveFloatingWindow() {
-        x += dx;
-        y += dy;
-
-        // 处理边界反弹
-        if (x < 0 || x > window.innerWidth - 300) {
-            dx = -dx;
-        }
-        if (y < 0 || y > window.innerHeight - 400) {
-            dy = -dy;
-        }
-
-        // 更新飘窗位置
-        floatingWindow.style.left = x + 'px';
-        floatingWindow.style.top = y + 'px';
-
-        requestAnimationFrame(moveFloatingWindow);
-    }
-
-    // 开始移动飘窗
-    moveFloatingWindow();
-
-    // 处理滚动事件，使飘窗跟随页面滚动
-    window.addEventListener('scroll', function() {
-        floatingWindow.style.top = window.pageYOffset + (window.innerHeight / 2 - 200) + 'px';
-    });
-
-    // 处理点击事件，在新标签页打开链接并隐藏飘窗
-    floatingWindow.addEventListener('click', function() {
-        window.open('{{ floating-window-link }}', '_blank');
-        floatingWindow.style.display = 'none';
-    });
-
-    // 处理鼠标悬停事件，改变鼠标样式
-    floatingWindow.addEventListener('mouseover', function() {
-        this.style.cursor = 'pointer';
-    });
-</script>
