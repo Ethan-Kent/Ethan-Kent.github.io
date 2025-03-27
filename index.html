@@ -49,13 +49,14 @@ description: "从胜利出发，与世界对话"
     .floating-ad {
         position: fixed;
         left: 0;
-        width: 6vw;
-        height: 10vh;
+        width: 8vw;
+        height: 12vh;
         background: #1691cd;
         border-radius: 0 10px 10px 0;
         z-index: 9999;
         overflow: hidden;
         cursor: pointer;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     .floating-ad img {
         width: 100%;
@@ -80,35 +81,40 @@ description: "从胜利出发，与世界对话"
 </a>
 
 <script>
-    (function() {
-        const ad = document.querySelector('.floating-ad');
-        let lastPosition = window.scrollY;
+(function() {
+    const ad = document.querySelector('.floating-ad');
+    let lastPosition = window.scrollY;
+    
+    function updatePosition() {
+        const viewportHeight = window.innerHeight;
+        const scrollY = window.scrollY;
+        const adHeight = ad.offsetHeight;
+        const maxScroll = document.documentElement.scrollHeight - viewportHeight;
         
-        function updatePosition() {
-            const viewportHeight = window.innerHeight;
-            const scrollY = window.scrollY;
-            const adHeight = ad.offsetHeight;
-            const maxScroll = document.documentElement.scrollHeight - viewportHeight;
-            
-            // 计算飘窗应该出现的位置
-            let targetY = scrollY + (viewportHeight - adHeight) / 2;
-            
-            // 限制位置在可视范围内
-            targetY = Math.max(targetY, scrollY);
-            targetY = Math.min(targetY, scrollY + viewportHeight - adHeight);
-            
-            // 应用平滑移动
-            ad.style.transform = `translateY(${targetY - lastPosition}px)`;
-            lastPosition = targetY;
+        // 计算飘窗应该出现的位置
+        let targetY = scrollY + (viewportHeight - adHeight) / 2;
+        
+        // 处理初始加载时的情况，确保飘窗在可视区域内
+        if (scrollY === 0) {
+            targetY = (viewportHeight - adHeight) / 2;
         }
+        
+        // 限制位置在可视范围内
+        targetY = Math.max(targetY, scrollY);
+        targetY = Math.min(targetY, scrollY + viewportHeight - adHeight);
+        
+        // 应用平滑移动
+        ad.style.transform = `translateY(${targetY - lastPosition}px)`;
+        lastPosition = targetY;
+    }
 
-        window.addEventListener('scroll', () => {
-            window.requestAnimationFrame(updatePosition);
-        });
+    window.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updatePosition);
+    });
 
-        // 初始化位置
-        updatePosition();
-    })();
+    // 初始化位置
+    updatePosition();
+})();
 </script>
 {% endif %}
 
