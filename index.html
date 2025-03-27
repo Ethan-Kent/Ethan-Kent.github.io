@@ -3,6 +3,8 @@ layout: page
 description: "从胜利出发，与世界对话"
 ---
 
+<!-- SweetAlert2 样式 -->
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
 <!-- 首页顶部滚动字条样式开始 -->
 <style>
@@ -81,6 +83,47 @@ description: "从胜利出发，与世界对话"
     {% endif %}
 </a>
 
+<!-- 中央弹窗确认提示 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 检查本地存储，判断是否已经确认过
+    if (!localStorage.getItem('sweetAlertConfirmed')) {
+        // 从 _config.yml 获取弹窗内容（自动转义特殊字符）
+        const title = {{ site.center-window-title | jsonify }};
+        const content = {{ site.center-window-content | jsonify }};
+        
+        // 配置弹窗参数
+        Swal.fire({
+            title: title,
+            html: content,
+            allowEscapeKey: false,      // 禁用 ESC 键关闭
+            allowOutsideClick: false,  // 禁用点击外部关闭
+            showConfirmButton: true,   // 显示确认按钮
+            confirmButtonText: '确认',
+            showCancelButton: false,   // 隐藏取消按钮
+            backdrop: 'rgba(0,0,0,0.7)', // 加深背景遮罩
+            customClass: {            // 自定义居中样式
+                popup: 'center-alert'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                localStorage.setItem('sweetAlertConfirmed', 'true'); // 保存状态
+            }
+        });
+    }
+});
+</script>
+<style>
+/* 确保弹窗居中 */
+.center-alert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+</style>
+
+<!-- 左侧广告 -->
 <script>
 (function() {
     const ad = document.querySelector('.floating-ad');
