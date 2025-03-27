@@ -6,7 +6,7 @@ top-scroll-bar: "🔈 欢迎访问胜利一中模拟联合国协会官网！网�
 
 # 左侧广告飘窗设置
 floating-window-control: true  # 广告总开关
-floating-window-img: "none"    # 广告图片路径，没有填none
+floating-window-img: "/img/slyzmun_header_img.webp"    # 广告图片路径，没有则填none
 floating-window-content: "广告飘窗<br>测试模块"  # 广告文字内容
 floating-window-link: "www.baidu.com"      # 跳转链接内容
 
