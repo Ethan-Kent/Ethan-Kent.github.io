@@ -21,93 +21,6 @@ description: "从胜利出发，与世界对话"
 </style>
 <!-- 首页顶部滚动字条样式结束 -->
 
-
-<!-- 广告飘窗开始 -->
-{% if site.floating-window-control %}
-<style>
-    #floating-ad {
-        position: absolute;
-        width: 120px;
-        height: 160px;
-        background: #1691cd;
-        border-radius: 8px;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-size: 14px;
-        padding: 10px;
-        cursor: pointer;
-        z-index: 9999;
-        transition: all 0.3s;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-</style>
-<!-- 广告飘窗样式结束 -->
-
-<!-- 广告飘窗HTML结构 -->
-<div id="floating-ad" style="display: none;">
-    {{ site.floating-window-content }}
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const ad = document.getElementById('floating-ad');
-    ad.style.display = 'block';
-
-    // 运动参数
-    let posX = Math.random() * (window.innerWidth - 120);
-    let posY = Math.random() * (window.innerHeight - 160);
-    let speedX = 1.5, speedY = 1.5;
-    let dirX = 1, dirY = 1;
-    
-    // 边界检测
-    function checkBounds() {
-        const rect = ad.getBoundingClientRect();
-        
-        if (rect.left <= 0) dirX = 1;
-        if (rect.right >= window.innerWidth) dirX = -1;
-        if (rect.top <= 0) dirY = 1;
-        if (rect.bottom >= window.innerHeight) dirY = -1;
-    }
-
-    // 运动更新
-    function updatePosition() {
-        checkBounds();
-        
-        posX += speedX * dirX;
-        posY += speedY * dirY;
-        
-        ad.style.transform = `translate(${posX}px, ${posY}px)`;
-        requestAnimationFrame(updatePosition);
-    }
-
-    // 跟随滚动
-    let lastScroll = { x: 0, y: 0 };
-    window.addEventListener('scroll', () => {
-        const scrollX = window.scrollX;
-        const scrollY = window.scrollY;
-        posX += scrollX - lastScroll.x;
-        posY += scrollY - lastScroll.y;
-        lastScroll = { x: scrollX, y: scrollY };
-    });
-
-    // 点击事件
-    ad.addEventListener('click', function() {
-        window.open('{{ site.floating-window-link }}', '_blank');
-        this.style.display = 'none';
-    });
-
-    // 初始位置
-    ad.style.transform = `translate(${posX}px, ${posY}px)`;
-    updatePosition();
-});
-</script>
-{% endif %}
-<!-- 广告飘窗结束 -->
-
-
 <!-- 顶部滚动字条内容开始 -->
 {% if site.top-scroll-bar-control | default: true %}
 <div style="position: relative; overflow: hidden; background: #1691cd; padding: 3px 0; margin-top: 10px;">
@@ -128,6 +41,77 @@ document.addEventListener('DOMContentLoaded', function() {
         this.style.animationPlayState = 'running';
     });
 </script>    
+
+
+<!-- 左侧广告飘窗 -->
+{% if site.floating-window-control %}
+<style>
+    .floating-ad {
+        position: fixed;
+        left: 0;
+        width: 120px;
+        height: 90px;
+        background: #1691cd;
+        border-radius: 0 10px 10px 0;
+        z-index: 9999;
+        transition: transform 0.3s linear;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    .floating-ad img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .floating-content {
+        color: white;
+        padding: 15px;
+        font-size: 14px;
+        text-align: center;
+    }
+</style>
+
+<a href="{{ site.floating-window-link }}" target="_blank" class="floating-ad">
+    {% if site.floating-window-img != 'none' %}
+        <img src="{{ site.floating-window-img }}" alt="推广内容">
+    {% else %}
+        <div class="floating-content">{{ site.floating-window-content }}</div>
+    {% endif %}
+</a>
+
+<script>
+    (function() {
+        const ad = document.querySelector('.floating-ad');
+        let lastPosition = window.scrollY;
+        
+        function updatePosition() {
+            const viewportHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+            const adHeight = ad.offsetHeight;
+            const maxScroll = document.documentElement.scrollHeight - viewportHeight;
+            
+            // 计算飘窗应该出现的位置
+            let targetY = scrollY + (viewportHeight - adHeight) / 2;
+            
+            // 限制位置在可视范围内
+            targetY = Math.max(targetY, scrollY);
+            targetY = Math.min(targetY, scrollY + viewportHeight - adHeight);
+            
+            // 应用平滑移动
+            ad.style.transform = `translateY(${targetY - lastPosition}px)`;
+            lastPosition = targetY;
+        }
+
+        window.addEventListener('scroll', () => {
+            window.requestAnimationFrame(updatePosition);
+        });
+
+        // 初始化位置
+        updatePosition();
+    })();
+</script>
+{% endif %}
+
 
 <!--以下是功能栏，删除
 <ul class="pager">
