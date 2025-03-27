@@ -1,3 +1,15 @@
+---
+layout:     page
+title:      胜利一中模拟联合国协会
+subtitle:   用户隐私协议
+date:       2025-03-26
+author:     SLYZMUN
+header-img: img/slyzmun_header_img.webp
+catalog:   false
+tags:
+    - 网站公告
+---
+
 **胜利一中模拟联合国协会网站（以下简称“本站”）高度重视用户（以下简称“您”）的个人信息与隐私保护。当您访问本站时，我们将严格按照本隐私协议处理所收集到的信息。请您仔细阅读本协议，在充分理解并同意后继续使用本网站服务。**
 
 ## 一、适用范围
