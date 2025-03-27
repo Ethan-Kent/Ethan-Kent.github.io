@@ -24,29 +24,21 @@ description: "从胜利出发，与世界对话"
 <!-- 广告飘窗样式 -->
 <style>
 .floating-ad {
-  position: fixed;
-  width: 120px;  
-  height: 90px;
-  background: #1691cd;
-  border-radius: 8px;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  z-index: 9999;
-  transition: transform 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    position: fixed;
+    width: 300px;
+    height: 100px;
+    background: #1691cd;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    z-index: 9999;
+    box-sizing: border-box;
+    display: none; /* 默认隐藏 */
+    transition: transform 0.1s linear;
 }
-    
-.ad-content {
-  max-width: 90%;
-  word-break: break-word;
-}
-    
 </style>
 
 
@@ -72,69 +64,6 @@ description: "从胜利出发，与世界对话"
     });
 </script>    
 
-
-<!-- 广告飘窗脚本开始 -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  {% if site.floating-window-control %}
-  const ad = document.getElementById('floatingAd');
-  if (!ad) return;
-
-  // 初始随机位置
-  let posX = Math.random() * (window.innerWidth - ad.offsetWidth);
-  let posY = Math.random() * (window.innerHeight - ad.offsetHeight);
-  let speedX = 1.5;
-  let speedY = 1.5;
-  let isHovering = false;
-
-  // 动画循环
-  function animate() {
-    if (!isHovering) {
-      posX += speedX;
-      posY += speedY;
-
-      // 边界碰撞检测
-      if (posX <= 0 || posX + ad.offsetWidth >= window.innerWidth) {
-        speedX *= -1;
-        posX = Math.max(0, Math.min(posX, window.innerWidth - ad.offsetWidth));
-      }
-      if (posY <= 0 || posY + ad.offsetHeight >= window.innerHeight) {
-        speedY *= -1;
-        posY = Math.max(0, Math.min(posY, window.innerHeight - ad.offsetHeight));
-      }
-
-      ad.style.transform = `translate(${posX}px, ${posY}px)`;
-    }
-    requestAnimationFrame(animate);
-  }
-
-  // 事件处理
-  ad.addEventListener('mouseenter', () => isHovering = true);
-  ad.addEventListener('mouseleave', () => isHovering = false);
-  
-  ad.addEventListener('click', function(e) {
-    e.preventDefault();
-    window.open('{{ site.floating-window-link }}', '_blank');
-    this.style.display = 'none';
-  });
-
-  // 初始化位置并启动动画
-  ad.style.transform = `translate(${posX}px, ${posY}px)`;
-  animate();
-
-  // 窗口调整处理
-  window.addEventListener('resize', () => {
-    posX = Math.max(0, Math.min(posX, window.innerWidth - ad.offsetWidth));
-    posY = Math.max(0, Math.min(posY, window.innerHeight - ad.offsetHeight));
-    ad.style.transform = `translate(${posX}px, ${posY}px)`;
-  });
-  {% endif %}
-});
-</script>
-<!-- 广告飘窗脚本结束 -->
-
-
-
 <!--以下是功能栏，删除
 <ul class="pager">
   
@@ -153,12 +82,86 @@ document.addEventListener('DOMContentLoaded', function() {
 </ul>
 以上是功能栏，删除-->
 
-<!-- 广告飘窗结构 -->
+<!-- 广告飘窗结构+功能开始 -->
 {% if site.floating-window-control %}
-<div class="floating-ad" id="floatingAd">
-  <div class="ad-content">{{ site.floating-window-content }}</div>
+<div class="floating-ad" data-link="{{ site.floating-window-link }}">
+    {{ site.floating-window-content }}
 </div>
+
+<script>
+(function() {
+    const floatingAd = document.querySelector('.floating-ad');
+    if (!floatingAd) return;
+
+    // 初始化参数
+    let posX = 0, posY = 0;
+    let dx = 2, dy = 2;
+    let isMoving = true;
+    let animationId;
+    const speed = 2;
+    
+    // 显示广告窗
+    floatingAd.style.display = 'block';
+    
+    // 随机初始位置
+    const initPosition = () => {
+        const width = floatingAd.offsetWidth;
+        const height = floatingAd.offsetHeight;
+        posX = Math.random() * (window.innerWidth - width);
+        posY = Math.random() * (window.innerHeight - height);
+        dx = Math.random() > 0.5 ? speed : -speed;
+        dy = Math.random() > 0.5 ? speed : -speed;
+    }
+
+    // 运动逻辑
+    const move = () => {
+        const width = floatingAd.offsetWidth;
+        const height = floatingAd.offsetHeight;
+        
+        posX += dx;
+        posY += dy;
+
+        // 边界碰撞检测
+        if (posX <= 0 || posX + width >= window.innerWidth) {
+            dx = -dx;
+            posX = Math.max(0, Math.min(posX, window.innerWidth - width));
+        }
+        if (posY <= 0 || posY + height >= window.innerHeight) {
+            dy = -dy;
+            posY = Math.max(0, Math.min(posY, window.innerHeight - height));
+        }
+
+        floatingAd.style.transform = `translate(${posX}px, ${posY}px)`;
+        
+        if (isMoving) {
+            animationId = requestAnimationFrame(move);
+        }
+    }
+
+    // 点击事件
+    floatingAd.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.open(floatingAd.dataset.link, '_blank');
+        floatingAd.style.display = 'none';
+        isMoving = false;
+        cancelAnimationFrame(animationId);
+    });
+
+    // 窗口调整时重置位置
+    window.addEventListener('resize', () => {
+        initPosition();
+        floatingAd.style.transform = `translate(${posX}px, ${posY}px)`;
+    });
+
+    // 初始化
+    initPosition();
+    move();
+})();
+</script>
 {% endif %}
+
+<!-- 广告飘窗结构+功能结束 -->
+
 
 {% for post in paginator.posts %}
 <div class="post-preview">
