@@ -1,5 +1,5 @@
 ---
-layout:     page
+layout:     default
 title:      胜利一中模拟联合国协会
 subtitle:   用户隐私协议
 date:       2025-03-26
