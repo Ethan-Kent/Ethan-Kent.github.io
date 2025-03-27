@@ -54,7 +54,6 @@ description: "从胜利出发，与世界对话"
         background: #1691cd;
         border-radius: 0 10px 10px 0;
         z-index: 9999;
-        transition: transform 0.3s linear;
         overflow: hidden;
         cursor: pointer;
     }
@@ -65,7 +64,7 @@ description: "从胜利出发，与世界对话"
     }
     .floating-content {
         color: white;
-        padding: 15px;
+        padding: 0px;
         font-size: 14px;
         text-align: center;
     }
@@ -73,7 +72,7 @@ description: "从胜利出发，与世界对话"
 
 <a href="{{ site.floating-window-link }}" target="_blank" class="floating-ad">
     {% if site.floating-window-img != 'none' %}
-        <img src="{{ site.floating-window-img }}" alt="推广内容">
+        <img src="{{ site.floating-window-img }}" alt="img">
     {% else %}
         <div class="floating-content">{{ site.floating-window-content }}</div>
     {% endif %}
