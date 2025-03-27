@@ -21,6 +21,36 @@ description: "从胜利出发，与世界对话"
 </style>
 <!-- 首页顶部滚动字条样式结束 -->
 
+<!-- 广告飘窗样式 -->
+<style>
+.floating-ad {
+  position: fixed;
+  width: 300px;  /* 3:4比例 */
+  height: 400px;
+  background: #1691cd;
+  border-radius: 8px;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  z-index: 9999;
+  transition: transform 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+    
+.ad-content {
+  max-width: 90%;
+  word-break: break-word;
+}
+    
+</style>
+
+
+
 <!-- 顶部滚动字条内容开始 -->
 {% if site.top-scroll-bar-control | default: true %}
 <div style="position: relative; overflow: hidden; background: #1691cd; padding: 3px 0; margin-top: 10px;">
@@ -43,6 +73,67 @@ description: "从胜利出发，与世界对话"
 </script>    
 
 
+<!-- 广告飘窗脚本开始 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  {% if site.floating-window-control %}
+  const ad = document.getElementById('floatingAd');
+  if (!ad) return;
+
+  // 初始随机位置
+  let posX = Math.random() * (window.innerWidth - ad.offsetWidth);
+  let posY = Math.random() * (window.innerHeight - ad.offsetHeight);
+  let speedX = 1.5;
+  let speedY = 1.5;
+  let isHovering = false;
+
+  // 动画循环
+  function animate() {
+    if (!isHovering) {
+      posX += speedX;
+      posY += speedY;
+
+      // 边界碰撞检测
+      if (posX <= 0 || posX + ad.offsetWidth >= window.innerWidth) {
+        speedX *= -1;
+        posX = Math.max(0, Math.min(posX, window.innerWidth - ad.offsetWidth));
+      }
+      if (posY <= 0 || posY + ad.offsetHeight >= window.innerHeight) {
+        speedY *= -1;
+        posY = Math.max(0, Math.min(posY, window.innerHeight - ad.offsetHeight));
+      }
+
+      ad.style.transform = `translate(${posX}px, ${posY}px)`;
+    }
+    requestAnimationFrame(animate);
+  }
+
+  // 事件处理
+  ad.addEventListener('mouseenter', () => isHovering = true);
+  ad.addEventListener('mouseleave', () => isHovering = false);
+  
+  ad.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.open('{{ site.floating-window-link }}', '_blank');
+    this.style.display = 'none';
+  });
+
+  // 初始化位置并启动动画
+  ad.style.transform = `translate(${posX}px, ${posY}px)`;
+  animate();
+
+  // 窗口调整处理
+  window.addEventListener('resize', () => {
+    posX = Math.max(0, Math.min(posX, window.innerWidth - ad.offsetWidth));
+    posY = Math.max(0, Math.min(posY, window.innerHeight - ad.offsetHeight));
+    ad.style.transform = `translate(${posX}px, ${posY}px)`;
+  });
+  {% endif %}
+});
+</script>
+<!-- 广告飘窗脚本结束 -->
+
+
 
 <!--以下是功能栏，删除
 <ul class="pager">
@@ -61,6 +152,13 @@ description: "从胜利出发，与世界对话"
                     
 </ul>
 以上是功能栏，删除-->
+
+<!-- 广告飘窗结构 -->
+{% if site.floating-window-control %}
+<div class="floating-ad" id="floatingAd">
+  <div class="ad-content">{{ site.floating-window-content }}</div>
+</div>
+{% endif %}
 
 {% for post in paginator.posts %}
 <div class="post-preview">
