@@ -22,34 +22,91 @@ description: "从胜利出发，与世界对话"
 <!-- 首页顶部滚动字条样式结束 -->
 
 
-<!-- 广告飘窗样式开始 -->
+<!-- 广告飘窗开始 -->
+{% if site.floating-window-control %}
 <style>
-    .floating-window {
-        position: absolute; 
-        width: 150px;
-        height: 200px;
+    #floating-ad {
+        position: absolute;
+        width: 120px;
+        height: 160px;
         background: #1691cd;
-        border-radius: 10px;
+        border-radius: 8px;
         color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         text-align: center;
-        line-height: 200px;
         font-size: 14px;
+        padding: 10px;
         cursor: pointer;
-        opacity: 0.9;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        display: none;
-        transform: none; 
+        z-index: 9999;
+        transition: all 0.3s;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 </style>
 <!-- 广告飘窗样式结束 -->
 
 <!-- 广告飘窗HTML结构 -->
-{% if site.floating-window-control %}
-<div class="window-control" id="windowToggle">关闭</div>
-<div class="floating-window" id="floatingWindow">
+<div id="floating-ad" style="display: none;">
     {{ site.floating-window-content }}
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const ad = document.getElementById('floating-ad');
+    ad.style.display = 'block';
+
+    // 运动参数
+    let posX = Math.random() * (window.innerWidth - 120);
+    let posY = Math.random() * (window.innerHeight - 160);
+    let speedX = 1.5, speedY = 1.5;
+    let dirX = 1, dirY = 1;
+    
+    // 边界检测
+    function checkBounds() {
+        const rect = ad.getBoundingClientRect();
+        
+        if (rect.left <= 0) dirX = 1;
+        if (rect.right >= window.innerWidth) dirX = -1;
+        if (rect.top <= 0) dirY = 1;
+        if (rect.bottom >= window.innerHeight) dirY = -1;
+    }
+
+    // 运动更新
+    function updatePosition() {
+        checkBounds();
+        
+        posX += speedX * dirX;
+        posY += speedY * dirY;
+        
+        ad.style.transform = `translate(${posX}px, ${posY}px)`;
+        requestAnimationFrame(updatePosition);
+    }
+
+    // 跟随滚动
+    let lastScroll = { x: 0, y: 0 };
+    window.addEventListener('scroll', () => {
+        const scrollX = window.scrollX;
+        const scrollY = window.scrollY;
+        posX += scrollX - lastScroll.x;
+        posY += scrollY - lastScroll.y;
+        lastScroll = { x: scrollX, y: scrollY };
+    });
+
+    // 点击事件
+    ad.addEventListener('click', function() {
+        window.open('{{ site.floating-window-link }}', '_blank');
+        this.style.display = 'none';
+    });
+
+    // 初始位置
+    ad.style.transform = `translate(${posX}px, ${posY}px)`;
+    updatePosition();
+});
+</script>
 {% endif %}
+<!-- 广告飘窗结束 -->
+
 
 <!-- 顶部滚动字条内容开始 -->
 {% if site.top-scroll-bar-control | default: true %}
@@ -71,72 +128,6 @@ description: "从胜利出发，与世界对话"
         this.style.animationPlayState = 'running';
     });
 </script>    
-
-<!-- 广告飘窗动画脚本 -->
-<script>
-    // 初始化飘窗状态（保持原有逻辑）
-    let isClosed = localStorage.getItem('windowClosed');
-    const floatingWindow = document.getElementById('floatingWindow');
-    if (!isClosed) floatingWindow.style.display = 'block';
-
-    // 使用AdMove实现斜向运动
-    const adMove = new AdMove('floatingWindow');
-    
-    // 定制运动参数（45度斜向）
-    adMove.SetLocation(50, 50); // 初始位置
-    adMove.SetDirection(1, 1); // 初始方向（x正方向，y正方向）
-    const step = 2; // 运动速度
-    const rad = Math.PI / 4; // 45度弧度
-    const kx = Math.sin(rad) * step; // x轴分量
-    const ky = Math.cos(rad) * step; // y轴分量
-
-    // 重写CustomMethod实现匀速斜向运动
-    floatingWindow.CustomMethod = function() {
-        const { ScrollX, ScrollY, MoveWidth, MoveHeight } = PicMove;
-        const W = MoveWidth - this.offsetWidth;
-        const H = MoveHeight - this.offsetHeight;
-
-        // 水平方向运动
-        adMove.x += adMove.dirx * kx;
-        if (adMove.x < 0 || adMove.x > W) {
-            adMove.dirx *= -1; // 水平反弹
-            kx = Math.sin((Math.random() + 1) * Math.PI / 6) * step; // 随机角度微调
-        }
-
-        // 垂直方向运动
-        adMove.y += adMove.diry * ky;
-        if (adMove.y < 0 || adMove.y > H) {
-            adMove.diry *= -1; // 垂直反弹
-            ky = Math.cos((Math.random() + 1) * Math.PI / 6) * step; // 随机角度微调
-        }
-
-        // 应用位置（跟随滚动）
-        this.style.left = adMove.x + ScrollX + 'px';
-        this.style.top = adMove.y + ScrollY + 'px';
-    };
-
-    // 控制逻辑（保持原有功能）
-    document.getElementById('windowToggle').addEventListener('click', () => {
-        if (floatingWindow.style.display === 'block') {
-            floatingWindow.style.display = 'none';
-            localStorage.setItem('windowClosed', 'true');
-            adMove.Run(false); // 暂停动画
-        } else {
-            floatingWindow.style.display = 'block';
-            localStorage.removeItem('windowClosed');
-            adMove.Run(true); // 恢复动画
-        }
-    });
-
-    floatingWindow.addEventListener('click', () => {
-        window.open('{{ site.floating-window-link }}', '_blank');
-        floatingWindow.style.display = 'none';
-        localStorage.setItem('windowClosed', 'true');
-    });
-
-    // 初始化运动（页面加载后启动）
-    if (!isClosed) adMove.Run();
-</script>
 
 <!--以下是功能栏，删除
 <ul class="pager">
