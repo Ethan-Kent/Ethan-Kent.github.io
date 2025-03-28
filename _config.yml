@@ -1,19 +1,13 @@
 site-general-control: true  # 全站开关（true/false），默认开启true，维护时false
 
-
-top-scroll-bar-control: true  # 顶部循环字条显示/隐藏（true/false）
+top-scroll-bar-control: false  # 顶部循环字条显示/隐藏（true/false）
 top-scroll-bar: "🔈 欢迎访问胜利一中模拟联合国协会官网！网站初期建设正稳步推进，更多精彩，敬请期待！"  # 字条内容
-
-# 开屏提示窗口设置
-center-window-title: 公告
-center-window-content: 欢迎访问胜利一中模拟联合国协会官网！<br>网站初期建设正稳步推进，更多精彩，敬请期待！
 
 # 左侧广告飘窗设置
 floating-window-control: false  # 广告总开关（默认关闭）
 floating-window-img: "none"    # 广告图片路径，没有则填none
 floating-window-content: "<b>DYMUN报名通道</b><br>>>点击进入"  # 广告文字内容
 floating-window-link: "/dymun"      # 跳转链接内容
-
 
 # 超链接模板：<a href="https://example.com">点击这里访问示例网站</a>
 
@@ -22,12 +16,10 @@ floating-window-link: "/dymun"      # 跳转链接内容
 # site-pv-data-control: -1000  # 全站访问量数据清零（0为实际值）
 # site-uv-data-control: -20  # 全站访客数数据清零（0为实际值）
 
-
 # 以下内容禁止修改！！！————————————————————————————————————————————————————————————————————————————————————————————————————————
 # 以下内容禁止修改！！！————————————————————————————————————————————————————————————————————————————————————————————————————————
 # 以下内容禁止修改！！！————————————————————————————————————————————————————————————————————————————————————————————————————————
 
-    
 # Site settings
 title: 胜利一中模拟联合国协会
 SEOTitle: SLYZMUN
@@ -38,21 +30,16 @@ url: "https://slyzmun.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 # github_repo: "https://github.com/slyzmun/slyzmun.github.io.git" # you code repository
 
-
 # 以下是联系方式，暂且隐藏
 # email是父元素，禁止删除！！！
 
 # email: slyzmun@outlook.com
 # QQ: "507227969"
 
-
-
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "胜利一中模拟联合国协会"
 sidebar-avatar: /img/slyzmun_logo.webp      # use absolute URL, seeing it's used in both `/` and `/about/`
-
-
 
 # SNS settings
 RSS: false
@@ -63,9 +50,6 @@ RSS: false
 # jianshu_username:   e71990ada2fd
 # twitter_username:   qiubaiying
 
-
-
-
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
 permalink: pretty
@@ -73,14 +57,9 @@ paginate: 10
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
 
-
-
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
 gems: [jekyll-paginate]
-
-
-
 
 # Markdown settings
 # replace redcarpet to kramdown,
@@ -90,8 +69,6 @@ markdown: kramdown
 highlighter: rouge
 kramdown:
   input: GFM                            # use Github Flavored Markdown !important
-
-
 
 # 评论系统
 # Disqus（https://disqus.com/）
@@ -107,9 +84,7 @@ gitalk:
   admin: ["slyzmun"]
   distractionFreeMode: false #是否启用类似FB的阴影遮罩
 
-
 # 统计
-
 # Analytics settings
 # Baidu Analytics
 # ba_track_id: b50bf2b12b5338a1845e33832976fd68
@@ -118,21 +93,13 @@ gitalk:
 # ga_track_id: 'UA-90855596-1'            # Format: UA-xxxxxx-xx
 # ga_domain: auto               # 默认的是 auto, 这里我是自定义了的域名，你如果没有自己的域名，需要改成auto
 
-
-
-
-
 # Featured Tags
 featured-tags: true                     # 是否使用首页标签
 featured-condition-size: 0              # 相同标签数量大于这个数，才会出现在首页（建议设置为0）
 
-
-
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
 service-worker: true
-
-
 
 # 友情链接
 friends: [
