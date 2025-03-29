@@ -110,8 +110,12 @@ friends: [
         title: "MAUAC模联信息平台",
         href: "https://mun.mauac.com/"
     },{
-        title: "世界青少年模联大会",
+        title: "WorldMUN世界青少年模联大会",
         href: "https://bfsumun.unischool.cn/"
+    },{
+        title: "MMUN模联峰会",
+        href: "https://www.unischool.cn/hdss/mnlhgqsnfh/"
+
 
     }
 ]
