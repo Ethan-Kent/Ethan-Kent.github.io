@@ -107,11 +107,12 @@ friends: [
         title: "胜利第一中学",
         href: "http://www.sldyzx.cn/"
     },{
-        title: "联合国",
-        href: "https://www.un.org/zh/"
+        title: "MAUAC模联信息平台",
+        href: "https://mun.mauac.com/"
     },{
-        title: "世界青少年模拟联合国大会",
+        title: "世界青少年模联大会",
         href: "https://bfsumun.unischool.cn/"
+
     }
 ]
 
