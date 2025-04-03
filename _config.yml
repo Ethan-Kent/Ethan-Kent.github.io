@@ -1,5 +1,8 @@
 site-general-control: true  # 全站开关（true/false），默认开启true，维护时false
 
+# 报名通道开关
+sign-up-control: true  # true为打开，false为关闭（默认关闭）
+
 top-scroll-bar-control: false  # 顶部循环字条显示/隐藏（true/false）
 top-scroll-bar: "🔈 欢迎访问胜利一中模拟联合国协会官网！网站初期建设正稳步推进，更多精彩，敬请期待！"  # 字条内容
 # 🔈 欢迎访问胜利一中模拟联合国协会官网！网站初期建设正稳步推进，更多精彩，敬请期待！
