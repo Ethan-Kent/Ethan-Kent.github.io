@@ -121,13 +121,16 @@ description: "从胜利出发，与世界对话"
 
 <!--右上功能栏开始-->
 <ul class="pager">
-  
     <li class="next">
-        <a href="/dymun" data-toggle="tooltip" data-placement="top" title="DYMUN报名通道">
-                        >> DYMUN【报名通道】<br>
-        </a></li>           
-                    
-</ul><hr>
+        <a href="{% if site.sign-up-control %}/dymun/sign-up{% else %}/dymun{% endif %}" 
+           data-toggle="tooltip" 
+           data-placement="top" 
+           title="DYMUN报名通道">
+            >> DYMUN【报名通道】<br>
+        </a>
+    </li>           
+</ul>
+<hr>
 <!--右上功能栏结束-->
 
 {% for post in paginator.posts %}
