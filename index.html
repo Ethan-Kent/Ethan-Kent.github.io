@@ -121,6 +121,7 @@ description: "从胜利出发，与世界对话"
 
 <!--右上功能栏开始-->
 <ul class="pager">
+    {% if site.sign-up-button %}
     <li class="next">
         <a href="{% if site.sign-up-control %}/dymun/sign-up{% else %}/dymun{% endif %}" 
            data-toggle="tooltip" 
@@ -128,7 +129,8 @@ description: "从胜利出发，与世界对话"
            title="DYMUN报名通道">
             >> DYMUN【报名通道】<br>
         </a>
-    </li>           
+    </li>
+    {% endif %}           
 </ul>
 <hr>
 <!--右上功能栏结束-->
