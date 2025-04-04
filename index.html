@@ -120,8 +120,8 @@ description: "从胜利出发，与世界对话"
 {% endif %}
 
 <!--右上功能栏开始-->
-<ul class="pager">
     {% if site.sign-up-button %}
+<ul class="pager">
     <li class="next">
         <a href="{% if site.sign-up-control %}/dymun/sign-up{% else %}/dymun{% endif %}" 
            data-toggle="tooltip" 
@@ -130,9 +130,10 @@ description: "从胜利出发，与世界对话"
             >> DYMUN【报名通道】<br>
         </a>
     </li>
-    {% endif %}           
-</ul>
+    </ul>
 <hr>
+    {% endif %}           
+
 <!--右上功能栏结束-->
 
 {% for post in paginator.posts %}
