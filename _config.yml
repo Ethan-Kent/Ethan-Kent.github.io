@@ -112,19 +112,22 @@ friends: [
     {
         title: "胜利第一中学",
         href: "http://www.sldyzx.cn/"
-    },{
-        title: "MAUAC模联信息平台",
-        href: "https://mun.mauac.com/"
-    },{
-        title: "WorldMUN世界青少年模联大会",
-        href: "https://bfsumun.unischool.cn/"
-    },{
-        title: "MMUN模联峰会",
-        href: "https://www.unischool.cn/hdss/mnlhgqsnfh/"
-
-
     }
 ]
+
+
+#     },{
+#         title: "MAUAC模联信息平台",
+#         href: "https://mun.mauac.com/"
+#     },{
+#         title: "WorldMUN世界青少年模联大会",
+#         href: "https://bfsumun.unischool.cn/"
+#     },{
+#         title: "MMUN模联峰会",
+#         href: "https://www.unischool.cn/hdss/mnlhgqsnfh/"
+
+
+
 
 
 
