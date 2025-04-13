@@ -20,16 +20,12 @@ floating-window-link: "/dymun"      # 跳转链接内容
 # site-pv-data-control: -1000  # 全站访问量数据清零（0为实际值）
 # site-uv-data-control: -20  # 全站访客数数据清零（0为实际值）
 
-# 以下内容禁止修改！！！————————————————————————————————————————————————————————————————————————————————————————————————————————
-# 以下内容禁止修改！！！————————————————————————————————————————————————————————————————————————————————————————————————————————
-# 以下内容禁止修改！！！————————————————————————————————————————————————————————————————————————————————————————————————————————
-
 # Site settings
 title: EthanKent
-SEOTitle: EthanKent个人博客
+SEOTitle: EthanKent
 header-img: img/slyzmun_header_img.webp
-description: "EthanKent个人博客"
-keyword: "科技,艺术,个人博客"
+description: "EthanKent的博客"
+keyword: "科技,网络,平面设计,艺术,个人博客"
 url: "https://ethan-kent.github.io/"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 # github_repo: "https://github.com/slyzmun/slyzmun.github.io.git" # you code repository
