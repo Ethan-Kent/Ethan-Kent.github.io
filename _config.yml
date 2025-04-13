@@ -5,9 +5,7 @@ sign-up-button: false  # 首页报名按钮开关，true为打开，false为关�
 sign-up-control: false  # 落地页开关，true为打开，false为关闭（默认关闭）
 
 top-scroll-bar-control: false  # 顶部循环字条显示/隐藏（true/false）
-top-scroll-bar: "🔈 欢迎访问胜利一中模拟联合国协会官网！网站初期建设正稳步推进，更多精彩，敬请期待！"  # 字条内容
-# 🔈 欢迎访问胜利一中模拟联合国协会官网！网站初期建设正稳步推进，更多精彩，敬请期待！
-# 🔈 预祝DYMUN东营市中学生模拟联合国协会2025年度夏季会议圆满成功！
+top-scroll-bar: "🔈 欢迎访问EthanKent的个人博客！网站初期建设正稳步推进，更多精彩，敬请期待！"  # 字条内容
 
 # 左侧广告飘窗设置
 floating-window-control: false  # 广告总开关（默认关闭）
@@ -27,12 +25,12 @@ floating-window-link: "/dymun"      # 跳转链接内容
 # 以下内容禁止修改！！！————————————————————————————————————————————————————————————————————————————————————————————————————————
 
 # Site settings
-title: 胜利一中模拟联合国协会
-SEOTitle: SLYZMUN
+title: EthanKent
+SEOTitle: EthanKent个人博客
 header-img: img/slyzmun_header_img.webp
-description: "胜利一中模拟联合国协会"
-keyword: "胜利一中,胜利第一中学,模拟联合国,模联,MUN,山东,东营,中学生社团"
-url: "https://slyzmun.github.io"          # your host, for absolute URL
+description: "EthanKent个人博客"
+keyword: "科技,艺术,个人博客"
+url: "https://ethan-kent.github.io/"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 # github_repo: "https://github.com/slyzmun/slyzmun.github.io.git" # you code repository
 
@@ -44,7 +42,7 @@ baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "胜利一中模拟联合国协会"
+sidebar-about-description: "EthanKent"
 sidebar-avatar: /img/slyzmun_logo.webp      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # SNS settings
