@@ -36,7 +36,7 @@ layout: default
                 {% if site.featured-tags %}
                 <section>
                     <!-- no hr -->
-                    <h5><a href="{{'/1-articles/' | prepend: site.baseurl }}">最新动态</a></h5>
+                    <h5><a href="{{'/1-articles/' | prepend: site.baseurl }}">博客文章</a></h5>
                     <div class="tags">
         				{% for tag in site.tags %}
                             {% if tag[1].size > {{site.featured-condition-size}} %}
@@ -85,7 +85,7 @@ layout: default
                 {% if site.featured-tags %}
                 <section>
                     <hr class="hidden-sm hidden-xs">
-                    <h5><a href="{{'/1-articles/' | prepend: site.baseurl }}">最新动态</a></h5>
+                    <h5><a href="{{'/1-articles/' | prepend: site.baseurl }}">博客文章</a></h5>
                     <div class="tags">
                         {% for tag in site.tags %}
                             {% if tag[1].size > {{site.featured-condition-size}} %}
@@ -100,7 +100,7 @@ layout: default
 
                 <!-- Short About -->
                 <section class="visible-md visible-lg">
-                    <hr><h5><a href="{{'/3-about/' | prepend: site.baseurl }}">关于我们</a></h5>
+                    <hr><h5><a href="{{'/3-about/' | prepend: site.baseurl }}">与我联系</a></h5>
                     <div class="short-about">
                         {% if site.sidebar-avatar %}
                             <a href="{{ site.baseurl }}/3-about">
@@ -186,8 +186,8 @@ layout: default
                             
                         </ul>
                         {% if site.email %}
-                            <p>社团邮箱: {{site.email}}</p>
-			    <p>负责人QQ: {{site.QQ}}</p>
+                            <p>邮箱: {{site.email}}</p>
+			    <p>QQ: {{site.QQ}}</p>
                         {% endif %}
                     </div>
                 </section>
