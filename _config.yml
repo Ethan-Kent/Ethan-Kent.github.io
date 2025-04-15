@@ -1,4 +1,4 @@
-site-general-control: true  # 全站开关（true/false），默认开启true，维护时false
+site-general-control: false  # 全站开关（true/false），默认开启true，维护时false
 
 # 报名通道开关（为确保功能正常，两个变量请写同一个值，不要出现一个true一个false）
 sign-up-button: false  # 首页报名按钮开关，true为打开，false为关闭（默认关闭）
