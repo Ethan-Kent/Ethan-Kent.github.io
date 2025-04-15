@@ -104,12 +104,12 @@ service-worker: true
 # 友情链接
 friends: [
     {
-        title: "胜利第一中学",
-        href: "http://www.sldyzx.cn/"
+#        title: "胜利第一中学",
+#        href: "http://www.sldyzx.cn/"
     
-    },{
-        title: "云湖社交软件",
-        href: "https://www.yhchat.com/"
+#    },{
+#        title: "云湖社交软件",
+#        href: "https://www.yhchat.com/"
         
     }
     
