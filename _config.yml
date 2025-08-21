@@ -33,8 +33,8 @@ baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 # 以下是联系方式，暂且隐藏
 # email是父元素，禁止删除！！！
 
-# email: slyzmun@outlook.com
-# QQ: "507227969"
+email: ethankent2007@163.com
+QQ: "3204078919"
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
