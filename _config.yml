@@ -4,13 +4,13 @@ site-general-control: true  # 全站开关（true/false），默认开启true，
 sign-up-button: false  # 首页报名按钮开关，true为打开，false为关闭（默认关闭）
 sign-up-control: false  # 落地页开关，true为打开，false为关闭（默认关闭）
 
-top-scroll-bar-control: false  # 顶部循环字条显示/隐藏（true/false）
+top-scroll-bar-control: true  # 顶部循环字条显示/隐藏（true/false）
 top-scroll-bar: "🔈 欢迎访问EthanKent的个人博客！网站初期建设正稳步推进，更多精彩，敬请期待！"  # 字条内容
 
 # 左侧广告飘窗设置
-floating-window-control: false  # 广告总开关（默认关闭）
-floating-window-img: "none"    # 广告图片路径，没有则填none
-floating-window-content: "<b>DYMUN报名通道</b><br>>>点击进入"  # 广告文字内容
+floating-window-control: true  # 广告总开关（默认关闭,true/false）
+floating-window-img: "https://img.cdn1.vip/i/69edebcea7476_1777200078.webp"    # 广告图片路径，没有则填none
+floating-window-content: "<b>广告内容测试</b><br>>>点击进入"  # 广告文字内容
 floating-window-link: "/dymun"      # 跳转链接内容
 
 # 超链接模板：<a href="https://example.com">点击这里访问示例网站</a>
@@ -108,21 +108,11 @@ friends: [
 #        href: "http://www.sldyzx.cn/"
     
 #    },{
-#        title: "云湖社交软件",
-#        href: "https://www.yhchat.com/"
+        title: "云湖社交软件",
+        href: "https://www.yhchat.com/"
         
     }
     
 ]
 
-
-#     },{
-#         title: "MAUAC模联信息平台",
-#         href: "https://mun.mauac.com/"
-#     },{
-#         title: "WorldMUN世界青少年模联大会",
-#         href: "https://bfsumun.unischool.cn/"
-#     },{
-#         title: "MMUN模联峰会",
-#         href: "https://www.unischool.cn/hdss/mnlhgqsnfh/"
 
